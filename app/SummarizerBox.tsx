@@ -1,8 +1,10 @@
 "use client";
 
 import axios from 'axios';
+import { Loader2 } from 'lucide-react';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { HashLoader } from 'react-spinners';
 
 console.log(process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY)
 
@@ -17,6 +19,7 @@ const SummarizerBox = () => {
       return;
     }
 
+    if (summarizedContent) setSummarizedContent("");
     setIsLoading(true);
 
     try {
@@ -46,31 +49,45 @@ const SummarizerBox = () => {
       });
       const message = data.choices[0].message.content;
       setSummarizedContent(message);
+
+      toast.success("Summarization successful")
     } catch (err: any) {
-      console.log(err);
-      toast.error(err?.message);
+      toast.error("Content Summarization Failed");
     } finally {
       setIsLoading(false);
     }
   }
 
   return (
-    <div className="bg-[#1f1f1f] h-11/12 w-10/12 rounded-2xl shadow-sm shadow-gray-950 border border-[#0a0a0a] grid grid-cols-2 p-6 gap-x-5 divide-x divide-[#373737]">
+    <div className="bg-[#1f1f1f] h-11/12 w-10/12 rounded-2xl shadow-sm shadow-gray-950 border border-[#0a0a0a] grid grid-cols-2 p-5 gap-x-5 divide-x divide-[#373737]">
       {/* Summarizer form */}
-      <div className="grid grid-rows-[1fr_max-content] gap-y-1 pr-5">
-        <textarea 
-          placeholder="Enter or paste here"
-          className="resize-none w-full rounded-2xl font-open-sans placeholder:text-lg outline-none text-lg"
-          value={text}
-          onChange={({ target }) => setText(target.value)}
-        />
+      <div className="grid grid-rows-[1fr_max-content] gap-y-3 pr-5">
+        <div className="relative">
+          <textarea 
+            placeholder="Enter or paste here"
+            className="resize-none w-full rounded-2xl font-open-sans placeholder:text-lg outline-none text-lg p-2 h-full"
+            value={text}
+            onChange={({ target }) => setText(target.value)}
+          />
+
+          {/* Loader */}
+          {isLoading && (
+            <div className="absolute top-0 left-0 size-full flex items-center justify-center bg-[#0a0a0a]/50 backdrop-blur-xs">
+              <HashLoader color="#bf29ff" />
+            </div>
+          )}
+        </div>
 
         <div className="flex justify-end">
           <button 
             onClick={promptSummarize}
-            className="w-max h-10 px-6 py-1 bg-[#bf29ff] rounded-full cursor-pointer"
+            disabled={isLoading}
+            className="w-max h-10 px-4 py-1 bg-[#bf29ff] rounded-full cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none flex items-center gap-x-1.5"
           >
-            {isLoading ? "Summarizing..." : "Summarize"} 
+            {isLoading && (
+              <Loader2 className="animate-spin size-5" />
+            )}
+            Summarize 
           </button>
         </div>
       </div>
