@@ -59,7 +59,7 @@ const SummarizerBox = () => {
   }
 
   return (
-    <div className="bg-[#1f1f1f] h-max md:h-11/12 w-10/12 rounded-2xl shadow-sm shadow-gray-950 border border-[#0a0a0a] grid grid-cols-1 md:grid-cols-2 p-3 md:p-5 gap-y-4 md:gap-x-5 divide-y md:divide-x divide-[#373737]">
+    <div className="bg-[#1f1f1f] h-max md:h-11/12 w-10/12 rounded-2xl shadow-sm shadow-gray-950 border border-[#0a0a0a] grid grid-cols-1 md:grid-cols-2 p-3 md:p-5 gap-y-4 md:gap-x-5 divide-y md:divide-y-0 md:divide-x divide-[#373737]">
       {/* Summarizer form */}
       <div className="h-60 md:h-full grid grid-rows-[1fr_max-content] gap-y-3 pb-4 md:pr-5">
         <div className="relative">
