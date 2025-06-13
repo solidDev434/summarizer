@@ -23,11 +23,11 @@ body {
   row-gap: 1rem;
 }
 
-textarea {
+.no-scrollbar {
   -ms-overflow-style: none; 
   scrollbar-width: none
 }
 
-textarea::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }

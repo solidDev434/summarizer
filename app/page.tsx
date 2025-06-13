@@ -5,12 +5,13 @@ import SummarizerBox from "@/app/SummarizerBox";
 export default function Home() {
   return (
     <>
-      <nav className="py-4 px-5 flex items-center -space-x-1">
+      <nav className="p-2 sm:py-4 sm:px-5 flex items-center -space-x-1">
         <Image 
           src={Favicon}
           alt="summarizer-logo"
           width={70}
           height={70}
+          className="size-[60px] sm:w-max"
         />
 
         <h1 className="text-lg font-black">SummarizeAI</h1>

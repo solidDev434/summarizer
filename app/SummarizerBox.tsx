@@ -20,6 +20,7 @@ const SummarizerBox = () => {
     }
 
     if (summarizedContent) setSummarizedContent("");
+
     setIsLoading(true);
 
     try {
@@ -52,6 +53,7 @@ const SummarizerBox = () => {
 
       toast.success("Summarization successful")
     } catch (err: any) {
+      console.log(err);
       toast.error("Content Summarization Failed");
     } finally {
       setIsLoading(false);
@@ -59,13 +61,13 @@ const SummarizerBox = () => {
   }
 
   return (
-    <div className="bg-[#1f1f1f] h-11/12 w-10/12 rounded-2xl shadow-sm shadow-gray-950 border border-[#0a0a0a] grid grid-cols-2 p-5 gap-x-5 divide-x divide-[#373737]">
+    <div className="bg-[#1f1f1f] h-max md:h-11/12 w-10/12 rounded-2xl shadow-sm shadow-gray-950 border border-[#0a0a0a] grid grid-cols-1 md:grid-cols-2 p-3 md:p-5 gap-y-4 md:gap-x-5 divide-y md:divide-x divide-[#373737]">
       {/* Summarizer form */}
-      <div className="grid grid-rows-[1fr_max-content] gap-y-3 pr-5">
+      <div className="h-60 md:h-full grid grid-rows-[1fr_max-content] gap-y-3 pb-4 md:pr-5">
         <div className="relative">
           <textarea 
             placeholder="Enter or paste here"
-            className="resize-none w-full rounded-2xl font-open-sans placeholder:text-lg outline-none text-lg p-2 h-full"
+            className="no-scrollbar resize-none w-full rounded-2xl font-open-sans placeholder:text-base sm:placeholder:text-lg outline-none text-base sm:text-lg p-2 h-full"
             value={text}
             onChange={({ target }) => setText(target.value)}
           />
@@ -78,11 +80,11 @@ const SummarizerBox = () => {
           )}
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end overflow-y-scroll no-scrollbar">
           <button 
             onClick={promptSummarize}
             disabled={isLoading}
-            className="w-max h-10 px-4 py-1 bg-[#bf29ff] rounded-full cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none flex items-center gap-x-1.5"
+            className="w-max h-8 sm:h-10 px-4 py-1 bg-[#bf29ff] rounded-full cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none flex items-center gap-x-1.5"
           >
             {isLoading && (
               <Loader2 className="animate-spin size-5" />
@@ -93,9 +95,9 @@ const SummarizerBox = () => {
       </div>
 
       {/* Summarizer Result */}
-      <div className="">
+      <div className="h-60 md:h-full overflow-y-scroll no-scrollbar">
         {summarizedContent ? (
-          <p className="text-lg leading-loose">{summarizedContent}</p>
+          <p className="text-base leading-relaxed sm:text-lg sm:leading-loose">{summarizedContent}</p>
         ) : null}
       </div>
     </div>
