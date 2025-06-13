@@ -6,8 +6,6 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { HashLoader } from 'react-spinners';
 
-console.log(process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY)
-
 const SummarizerBox = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [text, setText] = useState("");
