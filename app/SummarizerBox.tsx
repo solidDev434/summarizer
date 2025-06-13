@@ -50,7 +50,7 @@ const SummarizerBox = () => {
       setSummarizedContent(message);
 
       toast.success("Summarization successful")
-    } catch (err: any) {
+    } catch (err) {
       console.log(err);
       toast.error("Content Summarization Failed");
     } finally {
