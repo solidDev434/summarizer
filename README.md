@@ -1,6 +1,6 @@
 # SummarizerAI
 
-SummarizerAI harnesses the advanced capabilities of Nebius AI Studio, powered by the deepseek-ai/DeepSeek-V3 model, to summarize lengthy texts into clear, concise, and accurate summaries, preserving key insights and essential information.
+SummarizerAI leverages Nebius AI Studio API, powered by the deepseek-ai/DeepSeek-V3 model, to summarize lengthy texts into clear, concise, and accurate summaries, preserving key insights and essential information.
 
 ## Features
 - Summarizing news articles for quick reading.
