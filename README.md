@@ -1,6 +1,6 @@
 # SummarizerAI
 
-SummarizerAI is a leverages HummingFace AI cutting-edge natural language processing (NLP) to generate concise summaries of lengthy texts.
+SummarizerAI leverages Nebius AI Studio (deepseek-ai/DeepSeek-V3 model) to generate concise summaries of lengthy texts.
 
 ## Features
 - Summarizing news articles for quick reading.
